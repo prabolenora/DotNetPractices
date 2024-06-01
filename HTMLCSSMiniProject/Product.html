@@ -51,7 +51,8 @@
                         <div class="card-body">
                             <h4 id="productName1"></h4>
                             <p id="price1"></p>
-                            <button>Buy Now</button>
+                            <input id="hfId1" type="hidden" value="1">
+                            <button onclick="addToCart(document.getElementById('hfId1').value)">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -61,7 +62,8 @@
                         <div class="card-body">
                             <h4 id="productName2"></h4>
                             <p id="price2"></p>
-                            <button>Buy Now</button>
+                            <input id="hfId2" type="hidden" value="2">
+                            <button onclick="addToCart(document.getElementById('hfId2').value)">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -71,7 +73,8 @@
                         <div class="card-body">
                             <h4 id="productName3"></h4>
                             <p id="price3"></p>
-                            <button>Buy Now</button>
+                            <input id="hfId3" type="hidden" value="3">
+                            <button onclick="addToCart(document.getElementById('hfId3').value)">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -83,10 +86,10 @@
                         <div class="card-body">
                             <h4 id="productName4"></h4>
                             <p id="price4"></p>
-                            <button>Buy Now</button>
+                            <input id="hfId4" type="hidden" value="4">
+                            <button onclick="addToCart(document.getElementById('hfId4').value)">Buy Now</button>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-4">
                     <div class="card" style="width: 20rem;">
@@ -94,10 +97,10 @@
                         <div class="card-body">
                             <h3 id="productName5"></h3>
                             <p id="price5"></p>
-                            <button>Buy Now</button>
+                            <input id="hfId5" type="hidden" value="5">
+                            <button onclick="addToCart(document.getElementById('hfId5').value)">Buy Now</button>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-4">
                     <div class="card" style="width: 20rem;">
@@ -105,15 +108,82 @@
                         <div class="card-body">
                             <h4 id="productName6"></h4>
                             <p id="price6"></p>
-                            <button onclick="addToCart()" data-name>Buy Now</button>
+                            <input id="hfId6" type="hidden" value="6">
+                            <button onclick="addToCart(document.getElementById('hfId6').value)">Buy Now</button>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div>
 
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-4">
+                    <label id="lblName1"></label>
+                </div>
+                <div class="col-4">
+                    <label id="lblCost1"></label>
+                </div>
+                <div class="col-4">
+                    <button id="btnRemove1" onclick="RemoveProduct(1)">Remove</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label id="lblName2"></label>
+                </div>
+                <div class="col-4">
+                    <label id="lblCost2"></label>
+                </div>
+                <div class="col-4">
+                    <button id="btnRemove2" onclick="RemoveProduct(2)">Remove</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label id="lblName3"></label>
+                </div>
+                <div class="col-4">
+                    <label id="lblCost3"></label>
+                </div>
+                <div class="col-4">
+                    <button id="btnRemove3" onclick="RemoveProduct(3)">Remove</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label id="lblName4"></label>
+                </div>
+                <div class="col-4">
+                    <label id="lblCost4"></label>
+                </div>
+                <div class="col-4">
+                    <button id="btnRemove4" onclick="RemoveProduct(4)">Remove</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label id="lblName5"></label>
+                </div>
+                <div class="col-4">
+                    <label id="lblCost5"></label>
+                </div>
+                <div class="col-4">
+                    <button id="btnRemove5" onclick="RemoveProduct(5)">Remove</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label id="lblName6"></label>
+                </div>
+                <div class="col-4">
+                    <label id="lblCost6"></label>
+                </div>
+                <div class="col-4">
+                    <button id="btnRemove6" onclick="RemoveProduct(6)">Remove</button>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
