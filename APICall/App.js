@@ -153,7 +153,7 @@ function callAPI(){
                 if(element.name == city){
                     output.innerHTML+=`<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
                 }else{
-                    output.innerHTML='';
+                    output.innerHTML=`<div class="row"><label>Inserted city is not included.</label> </div>`;
                 }
             }else{
                 output.innerHTML+=`<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
