@@ -42,11 +42,11 @@ const products = [
     }
 ];
 
-window.onload = function exampleFunction(){
-    
-   
+window.onload = function exampleFunction() {
+
+
     displayProducts(products);
-    }
+}
 
 function displayProducts(products) {
     const name1 = document.getElementById('productName1');
@@ -132,34 +132,55 @@ function displayFilterProducts(products) {
     document.getElementById("divFilteredContent").style.display = 'block';
 }
 
-function callAPI(){
-    var city=document.getElementById('txtCity').value;
-   // alert(city);
+function callAPI() {
+    var city = document.getElementById('txtCity').value;
+    var exist=0;
+    var output = document.getElementById("divAPIOutput");
+    output.innerHTML = '';
+    // alert(city);
     var xhttp = new XMLHttpRequest();
-    // xhttp.onreadystatechange = function() {
-    //      if (this.readyState == 4 && this.status == 200) {
-    //          alert(this.responseText);
-    //      }
-    // };
-    xhttp.open("GET", "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=55e984a8b3a1536681ca87b42fbfbbc3", true);
-   // xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.send();
-    xhttp.onload=function(){
-        var out=JSON.parse(xhttp.response);
-        out.forEach(element => {
-            console.log(element);
-            var output=document.getElementById("divAPIOutput");
-            if(city != '' && city != null){
-                if(element.name == city){
-                    output.innerHTML+=`<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
-                }else{
-                    output.innerHTML=`<div class="row"><label>Inserted city is not included.</label> </div>`;
+    xhttp.onload = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var out = JSON.parse(xhttp.response);
+            out.forEach(element => {
+                console.log(element);
+                
+                if (city != '' && city != null) {
+                    if (element.name == city) {
+                        output.innerHTML = `<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
+                        exist=1;
+                    } else if (exist == 0) {
+                        output.innerHTML = `<div class="row"><labe id="lblNotFound">Inserted city is not included.</label> </div>`;
+                    }
+                } else {
+                    output.innerHTML += `<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
                 }
-            }else{
-                output.innerHTML+=`<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
-            }
-        });
-        console.log(JSON.parse(xhttp.response));
-        
-    }
+            });
+        } else {
+            // Handle errors based on status code
+            console.error("Error: " + this.status + " - " + this.statusText);
+            output.innerHTML = `<div class="row"><label  id="lblError">API call is failed.Please check you error log and try again</label> </div>`;
+        }
+    };
+    xhttp.open("GET", "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={APIKey}", true);
+    // xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send();
+    // xhttp.onload=function(){
+    //     var out=JSON.parse(xhttp.response);
+    //     out.forEach(element => {
+    //         console.log(element);
+    //         var output=document.getElementById("divAPIOutput");
+    //         if(city != '' && city != null){
+    //             if(element.name == city){
+    //                 output.innerHTML+=`<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
+    //             }else{
+    //                 output.innerHTML=`<div class="row"><label>Inserted city is not included.</label> </div>`;
+    //             }
+    //         }else{
+    //             output.innerHTML+=`<div class="row"><label>City : ${element.name}  lat :${element.lat} </label> </div>`;
+    //         }
+    //     });
+    //     console.log(JSON.parse(xhttp.response));
+
+    // }
 }
